@@ -1,0 +1,64 @@
+Return-Path: <odwraca@gmail.com>
+Received: from mail-qt1-f172.google.com (mail-qt1-f172.google.com [209.85.160.172])
+ by inbound-smtp.us-east-1.amazonaws.com with SMTP id ris5gdu8np16rifpj2pmre7tvgekhthmvc2pfa81
+ for hogtrap+01@traps.curtisbroscattle.com;
+ Wed, 27 Feb 2019 22:20:55 +0000 (UTC)
+X-SES-Spam-Verdict: PASS
+X-SES-Virus-Verdict: PASS
+Received-SPF: pass (spfCheck: domain of _spf.google.com designates 209.85.160.172 as permitted sender) client-ip=209.85.160.172; envelope-from=odwraca@gmail.com; helo=mail-qt1-f172.google.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of _spf.google.com designates 209.85.160.172 as permitted sender) client-ip=209.85.160.172; envelope-from=odwraca@gmail.com; helo=mail-qt1-f172.google.com;
+ dkim=pass header.i=@gmail.com;
+ dmarc=pass header.from=gmail.com;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFGMzYwSFdqT3BnMVRvQjh5eXpuendtN0VhWTg1WWJGSTh3OG9LTVBSdWZiSGZ6R2s4VXhmaURtTExGM2hiZ2NSOGZTR3hVYm81U05YR2szek9IVC9IR1BacDYydmlnWnZpY1hWeGVZVVZCUzN4b05jS2RHOVBJWklsRmoxUGErNFdtUmsyeGhzdFBuQlNMMTlMWmltT04wS1Z4YUw0ZUp0Zld6MDVlMGhvclNDSzB2enk0VmlVcm8wbk5zRWsrQWpXR1Z4UmxNcFdPVFIxS3R6YWVwMGhGVzhienlLZllXek1hWW1ySmdvcTBFV2Y4by82WUoxbjFSRUVmM214NFlVTTVjSFZiMmRlRWZHa004Vk9GNGpNTkwxZURRV3ZtV2NSOE5HVnFvQ3RmNlE9PQ==
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=EGYLGD3bDLi+eeDm8QBPyqSnj/XX+8pjJI5wiaflnsOIbXv6ZunUy89EUl+l7EVwqZhfAl4bK5zUrBOjGlw5co4YEolPQtxi6jmItbdIEv7xnpE5AuoBixnWxlu25KhOhWwYmVu7D0macYTsFsd0JR3v8dvbQWQndvoyHVcBJvs=; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1551306055; v=1; bh=aPwprG3UVUwXgbArCP9qyJBz6VjdY02JYCN4RfjBsoY=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-qt1-f172.google.com with SMTP id p48so21280487qtk.2
+        for <hogtrap+01@traps.curtisbroscattle.com>; Wed, 27 Feb 2019 14:20:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=ulvV6MyqotvAnHolI/4p8HJq9BSjfWUXdkj74VjNC8c=;
+        b=QnV7v5IEw+QBWdxyOApcgVoNPq+ZlrDoxfYvotYwLzi9HkXu2pHS19N28lfRmz/fxd
+         05YJjRCXuqDwxGgphcGD1O8mC+0uuBG/kyqz3LSzSsO/FQ4UWnWwHMNjdvJUFkPRpodb
+         0PHEPRnjANOVLoINlUSqTNw2IV/h16sHjIrBt9+ADPqbzfi0AjXLrYOf/68gK03lEnXV
+         /rWSFUQ3ooznL7y+BAGhHNuNx8X2ujO81Vp7mg57MiZA9dMKT6JyMvmUijQwlthfT/xq
+         KVY/ipmRv1E1LG4iZL/PCWawznBpsST6PL5F3JROvUGOhFvjoaeJn+LSfuIqNgftukWC
+         VeIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=ulvV6MyqotvAnHolI/4p8HJq9BSjfWUXdkj74VjNC8c=;
+        b=q1R6pP4hOn9B8YK5NrJ0ch48DAzhqzsTQNTmvIy1pYqJCHgwRmw/tjeCMfBxCw+hMV
+         tbC2y9+CswzUmuITfdNI7x/1Hg5vsKRSjjJmy3k5chnN8MX+GrrX2LJ+dfskY+S82aI2
+         CF9hOsTK/7AaA2tN65cZ7VvA/NQTb1uMO9LiiWQZ4MnGbWTczmLpCKl8AGIKcm2C5+tL
+         iU+/xIrwMgLCkh/RVDNcIckQUyqzVpvL9H6EJWV6ACVFBi/k1X1ar39OK9GfKiwOm0pr
+         JSD2FhZyQTmeUv1eRyNN8ZM4urTuISSsOFV+WrpZEQLDceRDoXPz+i8/phuL3FS011pn
+         DT9A==
+X-Gm-Message-State: AHQUAuYRS0aBpapc6x0rVzWOrXE0GyjoBG3iHeqw7/mX6vhw/t+KHl5R
+	kaoDf/EUTm8pywFtUoaZhW2h8IHYG3cZOG+egjKRWw==
+X-Google-Smtp-Source: AHgI3Ib2ac2AGXPoJzzqgV19Qv3mB+flw/DtZJSOJUvhyOBPdPr66N8ksq7qB23f3AB0lzhjBnuxG1cSnNDrEmN8BA8=
+X-Received: by 2002:aed:21e2:: with SMTP id m31mr3667364qtc.44.1551306054425;
+ Wed, 27 Feb 2019 14:20:54 -0800 (PST)
+MIME-Version: 1.0
+From: Odwraca <odwraca@gmail.com>
+Date: Wed, 27 Feb 2019 16:20:43 -0600
+Message-ID: <CA+bwJqXRrZEun1GdX83GV0BgK1LA9aHXn19PMJV+0HHVPOUqtw@mail.gmail.com>
+Subject: time 4:20p
+To: hogtrap+01@traps.curtisbroscattle.com
+Content-Type: multipart/alternative; boundary="0000000000004fe2d40582e79685"
+
+--0000000000004fe2d40582e79685
+Content-Type: text/plain; charset="UTF-8"
+
+sent
+
+-- 
+*Aaron Curtis*
+C: 903-563-5684
+
+--0000000000004fe2d40582e79685
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr">sent<br clear="all"><div><br></div>-- <br><div dir="ltr" class="gmail_signature" data-smartmail="gmail_signature"><div dir="ltr"><div><div dir="ltr"><div><b>Aaron Curtis</b></div><div>C: 903-563-5684</div></div></div></div></div></div>
+
+--0000000000004fe2d40582e79685--
